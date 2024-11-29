@@ -14,7 +14,7 @@ app.use("/profesores", profesorRoutes);
 
 sequelize.sync().then(() => {
   app.listen(3000, () => {
-    console.log("Base de datos conectada");
-    console.log("Servidor corriendo en el puerto 3000");
+    console.log("Base de datos conectada.");
+    console.log("Servidor corriendo en el puerto 3000.");
   });
 });
