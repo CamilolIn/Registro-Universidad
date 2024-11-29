@@ -20,41 +20,6 @@
     <li><strong>Morgan</strong>: Middleware para el registro de solicitudes HTTP.</li>
   </ul>
 
-  <h2>📂 Estructura del Proyecto</h2>
-  <pre>
-src
-├── controllers
-│   ├── authController.js        # Controlador para autenticación y registro
-│   ├── studentController.js     # Controlador para operaciones relacionadas con estudiantes
-│   ├── courseController.js      # Controlador para operaciones de materias
-│   └── professorController.js   # Controlador para operaciones de profesores
-├── models
-│   ├── student.js               # Modelo de estudiante
-│   ├── course.js                # Modelo de materia
-│   ├── professor.js             # Modelo de profesor
-│   ├── credit.js                # Modelo para créditos
-│   └── enrollment.js            # Modelo de inscripción (relación entre estudiantes y materias)
-├── migrations                   # Archivos de migración de base de datos
-│   ├── 202311...create-student.js
-│   ├── 202311...create-course.js
-│   └── 202311...create-enrollment.js
-├── seeders                      # Archivos de seeders para insertar datos de prueba
-│   ├── 202311...seed-students.js
-│   ├── 202311...seed-courses.js
-│   └── 202311...seed-professors.js
-├── public                       # Archivos públicos (images, css, js, etc.)
-├── routes                       # Rutas de la aplicación
-│   ├── authRoutes.js            # Rutas para autenticación y registro
-│   ├── studentRoutes.js         # Rutas para operaciones de estudiantes
-│   ├── courseRoutes.js          # Rutas para operaciones de materias
-│   └── professorRoutes.js       # Rutas para operaciones de profesores
-├── services                     # Servicios adicionales (API externa de conversión de divisas)
-│   └── currencyService.js       # Servicio para obtener la tasa de cambio de USD a EUR
-├── .env                         # Archivo de configuración con variables de entorno
-├── app.js                       # Punto de entrada de la aplicación
-└── package.json                 # Gestión de dependencias y scripts
-  </pre>
-
   <h2>🧩 Funcionalidades Principales</h2>
   <ul>
     <li><strong>Registro de estudiantes</strong>: Los estudiantes pueden registrarse proporcionando sus datos personales.</li>
