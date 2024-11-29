@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Proyecto de Registro Universitario</title>
 </head>
 <body>
   <h1>📚 Proyecto de Registro Universitario</h1>
@@ -104,9 +103,6 @@ cd Registro-Universidad</code></pre>
       <pre><code>npm run db:seeders</code></pre>
     </li>
   </ul>
-
-  <h3>Estructura de Carpetas</h3>
-  <p>Este proyecto está estructurado en varios módulos y controladores para una mejor organización del código y separación de responsabilidades.</p>
 
   
   <h2>📊 Listado de Tablas</h2>
