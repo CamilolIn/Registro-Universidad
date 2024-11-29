@@ -44,6 +44,18 @@ Registro-Universidad
     <li><strong>Cálculo de créditos</strong>: Cada materia tiene un valor de 3 créditos, y cada crédito equivale a $150 USD. El valor total de la inscripción se muestra en dólares y su conversión a euros (utilizando la tasa de cambio actual de Frankfurter API).</li>
   </ul>
 
+  <h2>🛠️ Variables de entorno</h2>
+    <p>En la raiz del proyecto crea un archovo .env ncon este formato, recuerda llenar los datos de usuario y contraseña con los tuyos</p>
+    <p>La base de datos debe llamarse universidad</p>
+    <pre>
+        DB_HOST=localhost
+        DB_USERNAME=root
+        DB_PASSWORD=
+        DB_NAME=universidad
+        DB_DIALECT=mysql
+    </pre>
+
+
   <h2>🛠️ Instalación y Configuración</h2>
 
   <h3>Paso 1: Clonar el repositorio</h3>
