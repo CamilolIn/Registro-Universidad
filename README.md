@@ -20,6 +20,20 @@
     <li><strong>Morgan</strong>: Middleware para el registro de solicitudes HTTP.</li>
   </ul>
 
+  <h2>🛠️ Arquitectura de la APP</h2>
+    <p>La arquitectura del proyecto es Hexagonal</p>
+        <pre>
+Registro-Universidad
+├── src/
+│   ├── application/                 # Capa de aplicación
+│   ├── domain/                      # Capa de dominio
+│   └── infrastructure/              # Capa de infraestructura
+├── .env                             # Variables de entorno
+├── .gitignore
+├── package.json
+└── README.md
+  </pre>
+
   <h2>🧩 Funcionalidades Principales</h2>
   <ul>
     <li><strong>Registro de estudiantes</strong>: Los estudiantes pueden registrarse proporcionando sus datos personales.</li>
