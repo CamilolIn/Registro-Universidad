@@ -1,6 +1,5 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    // Crear la tabla Profesores
     await queryInterface.createTable("Profesores", {
       id: {
         allowNull: false,
@@ -19,11 +18,11 @@ module.exports = {
       programaId: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Programas", // Tabla relacionada
-          key: "id", // Columna en la tabla Programas
+          model: "Programas",
+          key: "id",
         },
         allowNull: false,
-        onDelete: "CASCADE", // Opcional: Si se elimina un programa, se eliminan los profesores asociados
+        onDelete: "CASCADE",
       },
       createdAt: {
         allowNull: false,
@@ -37,11 +36,10 @@ module.exports = {
       },
     });
 
-    // Crear la relación entre Profesores y Programas
     await queryInterface.addConstraint("Profesores", {
       fields: ["programaId"],
       type: "foreign key",
-      name: "fk_profesor_programa", // Nombre opcional de la clave foránea
+      name: "fk_profesor_programa",
       references: {
         table: "Programas",
         field: "id",
@@ -51,10 +49,7 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    // Eliminar la relación de la clave foránea
     await queryInterface.removeConstraint("Profesores", "fk_profesor_programa");
-
-    // Eliminar la tabla Profesores
     await queryInterface.dropTable("Profesores");
   },
 };

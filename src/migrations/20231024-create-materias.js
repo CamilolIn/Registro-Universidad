@@ -1,4 +1,3 @@
-// src/migrations/20231021-create-materias.js
 module.exports = {
     up: async (queryInterface, Sequelize) => {
       await queryInterface.createTable('Materias', {

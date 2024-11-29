@@ -15,14 +15,11 @@ class EstudianteService {
       throw new Error("No eres residente de los Estados Unidos");
     ("Service INIT");
     (Estudiante);
-    // Asegúrate de que estamos usando el método de Sequelize 'create' correctamente
     const estudiante = await Estudiante.create({ nombre, pais_residencia });
 
-    // Comprobamos que el programa existe
     const programa = await Programa.findByPk(programId);
     if (!programa) throw new Error("El programa de créditos no existe.");
 
-    // Asociamos el estudiante con el programa
     await estudiante.addPrograma(programa);
 
     return estudiante;
@@ -68,7 +65,6 @@ class EstudianteService {
         throw new Error("Estudiante no encontrado");
       }
 
-      // Obtener la tasa de cambio
       const { usdToEur } = await this.obtenerTasaDeCambio();
 
       const precioUsd = 150;
@@ -80,17 +76,17 @@ class EstudianteService {
             estudiantePrograma.programas.length > 0
               ? estudiantePrograma.programas[0].nombre
               : null,
-          total_matricula_usd: estudianteMaterias.materias.length * precioUsd,
+          total_matricula_usd: ((estudianteMaterias.materias.length)*3) * precioUsd,
           total_matricula_eur: Number(
             (
-              estudianteMaterias.materias.length * Number(precioEur.toFixed(2))
+                ((estudianteMaterias.materias.length)*3) * Number(precioEur.toFixed(2))
             ).toFixed(2)
           ),
           materias: estudianteMaterias.materias.map((materia) => {
             return {
               nombre: materia.nombre,
-              precioUSD: precioUsd,
-              precioEUR: Number(precioEur.toFixed(2)),
+              precioUSD: precioUsd*3,
+              precioEUR: Number((Number(precioEur.toFixed(2))*3).toFixed(2)),
             };
           }),
         },
@@ -146,7 +142,6 @@ class EstudianteService {
       );
     }
 
-    // Inscribir al estudiante en la materia
     await estudianteMaterias.addMateria(materia);
     ("estudiante, ", JSON.stringify(estudianteMaterias.materias));
     return {
@@ -160,14 +155,13 @@ class EstudianteService {
 
   async obtenerCompanerosDeClase(estudianteId) {
     try {
-      // Obtener el estudiante y las materias en las que está matriculado
       const estudiante = await Estudiante.findByPk(estudianteId, {
         include: [
           {
             model: Materia,
             as: "materias",
             attributes: ["id", "nombre"],
-            through: { attributes: [] }, // Excluye los atributos de la tabla intermedia
+            through: { attributes: [] },
           },
         ],
       });
@@ -176,12 +170,9 @@ class EstudianteService {
         throw new Error("Estudiante no encontrado");
       }
 
-      // Crear un array para almacenar las materias y los compañeros
       const resultados = [];
 
-      // Recorrer todas las materias del estudiante
       for (const materia of estudiante.materias) {
-        // Buscar los estudiantes de la misma materia, excluyendo al estudiante actual
         const estudiantesMateria = await Materia.findByPk(materia.id, {
           include: [
             {
@@ -189,7 +180,7 @@ class EstudianteService {
               as: "estudiantes",
               attributes: ["id", "nombre"],
               through: { attributes: [] },
-              where: { id: { [db.Sequelize.Op.ne]: estudianteId } }, // Excluimos al estudiante que consulta
+              where: { id: { [db.Sequelize.Op.ne]: estudianteId } },
             },
           ],
         });
@@ -204,12 +195,12 @@ class EstudianteService {
 
           resultados.push({
             materia: materia.nombre,
-            compañeros: companeros,
+            compañeros: companeros ?? [],
           });
         }
       }
 
-      return resultados; // Retorna un array con las materias y los compañeros
+      return resultados.length === 0 ? "Aun no tienes compañeros en ninguna clase": resultados;
     } catch (error) {
       throw new Error(
         "Error al obtener los compañeros de clase: " + error.message

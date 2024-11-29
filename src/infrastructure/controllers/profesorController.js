@@ -1,4 +1,3 @@
-// src/controllers/profesorController.js
 const ListarProfesoresEstudiantes = require('../../aplicacion/casosDeUso/listarProfesoresEstudiantes');
 
 class ProfesorController {

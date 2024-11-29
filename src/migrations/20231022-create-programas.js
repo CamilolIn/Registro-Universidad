@@ -1,4 +1,3 @@
-// src/migrations/20231021-create-programas.js
 module.exports = {
     up: async (queryInterface, Sequelize) => {
       await queryInterface.createTable('Programas', {

@@ -1,4 +1,3 @@
-// Ejemplo de migración para ProfesorMateria
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('ProfesorMateria', {

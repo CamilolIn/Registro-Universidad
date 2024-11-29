@@ -47,13 +47,12 @@ class EstudianteController {
   }
 
   async obtenerCompaneros(req, res) {
-    const { estudianteId } = req.params;  // Obtener el ID del estudiante desde los parámetros de la URL
+    const { estudianteId } = req.params;
 
     try {
       const listarCompanerosDeClase = new ListarCompanerosDeClase();
       const companeros = await listarCompanerosDeClase.ejecutar(estudianteId);
 
-      // Responder con los nombres de los compañeros
       return res.status(200).json({
         materias_compañeros: companeros,
       });

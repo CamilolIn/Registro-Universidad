@@ -1,5 +1,5 @@
 const db = require("../../shared/config/database");
-const Estudiante = db.Estudiante; // Aseguramos que estamos usando el modelo importado correctamente
+const Estudiante = db.Estudiante;
 const Programa = db.Programa;
 const Materia = db.Materia;
 const Profesor = db.Profesor;

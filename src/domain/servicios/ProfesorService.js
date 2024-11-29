@@ -4,7 +4,6 @@ const Materia = db.Materia;
 const Profesor = db.Profesor;
 
 class ProfesorDomain {
-  // Obtener todas las materias de un profesor, con los estudiantes asociados
   static async obtenerMaterias(profesorId) {
     const profesor = await Profesor.findByPk(profesorId, {
       include: {
@@ -30,7 +29,6 @@ class ProfesorDomain {
     }));
   }
 
-  // Obtener todos los profesores con sus materias y estudiantes asociados
   static async obtenerTodos() {
     const result = await Profesor.findAll({
       include: {
