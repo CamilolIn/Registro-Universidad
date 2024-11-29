@@ -28,6 +28,8 @@ Registro-Universidad
 │   ├── application/                 # Capa de aplicación
 │   ├── domain/                      # Capa de dominio
 │   └── infrastructure/              # Capa de infraestructura
+|   |── seeders/
+|   ├── migrations/
 ├── .env                             # Variables de entorno
 ├── .gitignore
 ├── package.json
